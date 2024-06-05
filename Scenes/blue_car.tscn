@@ -1,15 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://daun0edjtjxrv"]
+[gd_scene load_steps=10 format=3 uid="uid://daun0edjtjxrv"]
 
 [ext_resource type="Script" path="res://blue_car.gd" id="1_1f7y2"]
 [ext_resource type="Texture2D" uid="uid://dw28vrkqv5kx3" path="res://pozegodor/blue_car_down.png" id="2_dx2h0"]
 [ext_resource type="Texture2D" uid="uid://b63bx5xer3teu" path="res://pozegodor/blue_car_left.png" id="3_xmh40"]
 [ext_resource type="Texture2D" uid="uid://by7baug6ste0q" path="res://pozegodor/blue_car_up.png" id="4_8x4pr"]
+[ext_resource type="Texture2D" uid="uid://b81sgwiai2pmd" path="res://pozegodor/circular progressbar/background.png" id="5_mko23"]
+[ext_resource type="Texture2D" uid="uid://cbgdjforyyhwy" path="res://pozegodor/circular progressbar/over.png" id="6_6aw3u"]
+[ext_resource type="Texture2D" uid="uid://dr3f18qghe72m" path="res://pozegodor/circular progressbar/progress.png" id="7_y181l"]
 
 [sub_resource type="Curve2D" id="Curve2D_ajpon"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, 64, 136, 0, 0, 0, 0, 64, 176, 0, 0, 0, 0, 72, 184, 0, 0, 0, 0, 80, 192, 0, 0, 0, 0, 720, 192, 0, 0, 0, 0, 728, 200, 0, 0, 0, 0, 736, 208, 0, 0, 0, 0, 736, 240, 0, 0, 0, 0, 744, 248, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 880, 256, 0, 0, 0, 0, 888, 248, 0, 0, 0, 0, 896, 240, 0, 0, 0, 0, 896, 112, 0, 0, 0, 0, 896, 208, 0, 0, 0, 0, 888, 216, 0, 0, 0, 0, 880, 224, 0, 0, 0, 0, 784, 224, 0, 0, 0, 0, 768, 208, 0, 0, 0, 0, 768, 176, 0, 0, 0, 0, 760, 160, 0, 0, 0, 0, 88, 160, 0, 0, 0, 0, 72, 160, 0, 0, 0, 0, 64, 144, 0, 0, 0, 0, 64, 136)
+"points": PackedVector2Array(0, 0, 0, 0, 64, 136, 0, 0, 0, 0, 64, 176, 0, 0, 0, 0, 72, 184, 0, 0, 0, 0, 80, 192, 0, 0, 0, 0, 720, 192, 0, 0, 0, 0, 728, 200, 0, 0, 0, 0, 736, 208, 0, 0, 0, 0, 736, 240, 0, 0, 0, 0, 744, 248, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 880, 256, 0, 0, 0, 0, 888, 248, 0, 0, 0, 0, 896, 240, 0, 0, 0, 0, 896, 128, 0, 0, 0, 0, 840, 128, 0, 0, 0, 0, 888, 128, 0, 0, 0, 0, 888, 136, 0, 0, 0, 0, 888, 161, 0, 0, 0, 0, 888, 216, 0, 0, 0, 0, 880, 224, 0, 0, 0, 0, 784, 224, 0, 0, 0, 0, 768, 208, 0, 0, 0, 0, 768, 176, 0, 0, 0, 0, 760, 160, 0, 0, 0, 0, 88, 160, 0, 0, 0, 0, 72, 160, 0, 0, 0, 0, 64, 144, 0, 0, 0, 0, 64, 136)
 }
-point_count = 25
+point_count = 28
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_yu0pb"]
 animations = [{
@@ -58,3 +61,15 @@ loop = false
 position = Vector2(7.31603, 0.320007)
 sprite_frames = SubResource("SpriteFrames_yu0pb")
 animation = &"left"
+
+[node name="progressbar" type="TextureProgressBar" parent="."]
+offset_left = 770.0
+offset_top = -8.0
+offset_right = 802.0
+offset_bottom = 24.0
+scale = Vector2(0.41, 0.41)
+fill_mode = 4
+texture_under = ExtResource("5_mko23")
+texture_over = ExtResource("6_6aw3u")
+texture_progress = ExtResource("7_y181l")
+tint_progress = Color(0, 0.745098, 0, 1)
