@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://daun0edjtjxrv"]
+
+[ext_resource type="Script" path="res://blue_car.gd" id="1_1f7y2"]
+[ext_resource type="Texture2D" uid="uid://dw28vrkqv5kx3" path="res://pozegodor/blue_car_down.png" id="2_dx2h0"]
+[ext_resource type="Texture2D" uid="uid://b63bx5xer3teu" path="res://pozegodor/blue_car_left.png" id="3_xmh40"]
+[ext_resource type="Texture2D" uid="uid://by7baug6ste0q" path="res://pozegodor/blue_car_up.png" id="4_8x4pr"]
+
+[sub_resource type="Curve2D" id="Curve2D_q0dut"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 64, 136, 0, 0, 0, 0, 64, 152, 0, 0, 0, 0, 64, 176, 0, 0, 0, 0, 72, 184, 0, 0, 0, 0, 72, 184, 0, 0, 0, 0, 72, 184, 0, 0, 0, 0, 80, 192, 0, 0, 0, 0, 88, 192, 0, 0, 0, 0, 720, 192, 0, 0, 0, 0, 728, 200, 0, 0, 0, 0, 736, 208, 0, 0, 0, 0, 736, 224, 0, 0, 0, 0, 736, 240, 0, 0, 0, 0, 744, 248, 0, 0, 0, 0, 752, 256, 0, 0, 0, 0, 840, 256, 0, 0, 0, 0, 880, 256, 0, 0, 0, 0, 888, 248, 0, 0, 0, 0, 896, 240, 0, 0, 0, 0, 896, 112)
+}
+point_count = 20
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_yu0pb"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_dx2h0")
+}],
+"loop": true,
+"name": &"down",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_xmh40")
+}],
+"loop": true,
+"name": &"left",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("4_8x4pr")
+}],
+"loop": true,
+"name": &"up",
+"speed": 5.0
+}]
+
+[node name="blue_car" type="Area2D"]
+script = ExtResource("1_1f7y2")
+
+[node name="Path2D" type="Path2D" parent="."]
+position = Vector2(-64, -112)
+curve = SubResource("Curve2D_q0dut")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D"]
+position = Vector2(56.79, 132.68)
+scale = Vector2(0.985507, 1)
+h_offset = -7.21
+v_offset = -3.32
+rotates = false
+cubic_interp = false
+loop = false
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
+position = Vector2(7.31603, 0.320007)
+sprite_frames = SubResource("SpriteFrames_yu0pb")
+animation = &"down"

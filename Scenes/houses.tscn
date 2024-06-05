@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://dcojodoefejqb"]
+
+[ext_resource type="Texture2D" uid="uid://dmbu41mtsh4d6" path="res://pozegodor/house1.png" id="1_uactg"]
+[ext_resource type="Texture2D" uid="uid://bru1r2xsgkeoh" path="res://pozegodor/bloc.png" id="2_qhygh"]
+[ext_resource type="PackedScene" uid="uid://daun0edjtjxrv" path="res://Scenes/blue_car.tscn" id="3_s6itb"]
+[ext_resource type="Texture2D" uid="uid://dklu0lneulcn7" path="res://pozegodor/button/normal_button.png" id="4_cgw2t"]
+[ext_resource type="Texture2D" uid="uid://h2rfljqjwlfj" path="res://pozegodor/button/pressed_button.png" id="5_7dpkx"]
+[ext_resource type="Texture2D" uid="uid://ec0gtgdypd83" path="res://pozegodor/button/hover_button.png" id="6_dluei"]
+
+[node name="Area2D" type="Area2D"]
+
+[node name="house1" type="Sprite2D" parent="."]
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("1_uactg")
+
+[node name="house2" type="Sprite2D" parent="."]
+visible = false
+position = Vector2(0, -11)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_qhygh")
+
+[node name="blue_car" parent="." instance=ExtResource("3_s6itb")]
+position = Vector2(0, 15)
+
+[node name="TextureButton" type="TextureButton" parent="."]
+offset_left = -31.0
+offset_top = -55.0
+offset_right = 116.0
+offset_bottom = -10.0
+scale = Vector2(0.43, 0.43)
+texture_normal = ExtResource("4_cgw2t")
+texture_pressed = ExtResource("5_7dpkx")
+texture_hover = ExtResource("6_dluei")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="TextureButton"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 13.9535
+offset_top = 11.6279
+offset_right = 136.953
+offset_bottom = 32.6279
+theme_override_font_sizes/font_size = 20
+text = "COLLECT"
+
+[connection signal="pressed" from="TextureButton" to="blue_car" method="_on_texture_button_pressed"]
