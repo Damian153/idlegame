@@ -1,10 +1,14 @@
-[gd_scene load_steps=9 format=3 uid="uid://b0klq4284m56i"]
+[gd_scene load_steps=13 format=3 uid="uid://b0klq4284m56i"]
 
 [ext_resource type="Texture2D" uid="uid://js2c1ak55o4d" path="res://pozegodor/tilemap.png" id="1_7rhx4"]
 [ext_resource type="Texture2D" uid="uid://x4s04r83r2g6" path="res://pozegodor/CityBuilder.png" id="2_b8i7p"]
 [ext_resource type="PackedScene" uid="uid://dcojodoefejqb" path="res://Scenes/houses.tscn" id="3_jbj48"]
 [ext_resource type="Script" path="res://Scenes/CanvasLayer.gd" id="4_58j50"]
 [ext_resource type="Texture2D" uid="uid://oe4x68fj7ube" path="res://pozegodor/circular progressbar/coin.png" id="4_akv0h"]
+[ext_resource type="Texture2D" uid="uid://dklu0lneulcn7" path="res://pozegodor/button/normal_button.png" id="6_akf7y"]
+[ext_resource type="Texture2D" uid="uid://h2rfljqjwlfj" path="res://pozegodor/button/pressed_button.png" id="7_k23ml"]
+[ext_resource type="Texture2D" uid="uid://ec0gtgdypd83" path="res://pozegodor/button/hover_button.png" id="8_bmmm8"]
+[ext_resource type="Texture2D" uid="uid://dlbypre88tk4k" path="res://pozegodor/circular progressbar/arrow.png" id="8_tjvel"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_6wmgr"]
 texture = ExtResource("1_7rhx4")
@@ -181,15 +185,74 @@ position = Vector2(64, 97)
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource("4_58j50")
 
-[node name="coin" type="Sprite2D" parent="CanvasLayer"]
-position = Vector2(38, 487)
-texture = ExtResource("4_akv0h")
+[node name="PanelContainer" type="PanelContainer" parent="CanvasLayer"]
+offset_top = 447.0
+offset_right = 960.0
+offset_bottom = 544.0
 
-[node name="coins_text" type="Label" parent="CanvasLayer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="CanvasLayer/PanelContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="upgrade_income" type="TextureButton" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture_normal = ExtResource("6_akf7y")
+texture_pressed = ExtResource("7_k23ml")
+texture_hover = ExtResource("8_bmmm8")
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer/upgrade_income"]
 texture_filter = 3
-offset_left = 71.0
-offset_top = 474.0
-offset_right = 123.0
-offset_bottom = 505.0
+layout_mode = 0
+offset_left = 5.00001
+offset_top = 20.0
+offset_right = 110.0
+offset_bottom = 41.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 17
+text = "INCOME"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/HBoxContainer/upgrade_income"]
+layout_mode = 0
+offset_left = 22.0
+offset_top = 39.0
+offset_right = 62.0
+offset_bottom = 79.0
+scale = Vector2(1.355, 1.355)
+texture = ExtResource("8_tjvel")
+
+[node name="coins_text" type="Label" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+texture_filter = 3
+layout_mode = 2
 theme_override_font_sizes/font_size = 30
-text = "99"
+text = "999"
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer/PanelContainer/HBoxContainer"]
+layout_mode = 2
+texture = ExtResource("4_akv0h")
+stretch_mode = 3
+
+[node name="start" type="TextureButton" parent="."]
+offset_left = 433.0
+offset_top = 17.0
+offset_right = 580.0
+offset_bottom = 62.0
+scale = Vector2(0.62, 0.62)
+texture_normal = ExtResource("6_akf7y")
+texture_pressed = ExtResource("7_k23ml")
+texture_hover = ExtResource("8_bmmm8")
+ignore_texture_size = true
+stretch_mode = 0
+
+[node name="Label" type="Label" parent="start"]
+texture_filter = 3
+layout_mode = 0
+offset_left = 32.2581
+offset_top = 12.9032
+offset_right = 120.258
+offset_bottom = 33.9032
+theme_override_font_sizes/font_size = 20
+text = "START"
+
+[connection signal="pressed" from="CanvasLayer/PanelContainer/HBoxContainer/upgrade_income" to="CanvasLayer" method="_on_upgrade_income_pressed"]
+[connection signal="pressed" from="start" to="houses" method="_on_start_pressed"]

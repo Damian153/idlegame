@@ -54,7 +54,6 @@ scale = Vector2(0.985507, 1)
 h_offset = -7.21
 v_offset = -3.32
 rotates = false
-cubic_interp = false
 loop = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Path2D/PathFollow2D"]
@@ -62,11 +61,12 @@ position = Vector2(7.31603, 0.320007)
 sprite_frames = SubResource("SpriteFrames_yu0pb")
 animation = &"left"
 
-[node name="progressbar" type="TextureProgressBar" parent="."]
-offset_left = 770.0
-offset_top = -8.0
-offset_right = 802.0
-offset_bottom = 24.0
+[node name="progressbar" type="TextureProgressBar" parent="Path2D/PathFollow2D/AnimatedSprite2D"]
+visible = false
+offset_left = -6.49621
+offset_top = -20.0
+offset_right = 25.5038
+offset_bottom = 12.0
 scale = Vector2(0.41, 0.41)
 fill_mode = 4
 texture_under = ExtResource("5_mko23")
